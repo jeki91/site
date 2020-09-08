@@ -1,0 +1,117 @@
+// подключаем scss файл с обнулением стиля
+@import "null_style.scss";
+
+//шаблон для первой строки страницы и для последней (class name, final)
+%tpltext_updown{
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	text-align: center;
+	font-size: 28px;
+	line-height: 40px;
+	letter-spacing: 2.8px;
+	text-transform: uppercase;
+	opacity: 0.8;
+	color: #273d46;
+	//border: 1px solid #000;
+}
+
+//создадим переменную для отступа сверху
+$mrg: 50px;
+
+//создадим шаблон для стилизации текста внутри страницы
+%tpltextbody{
+	width: 1000px;
+	text-align: justify;
+	font-size: 24px;
+	line-height: 40px;
+	margin: 0 auto;
+	margin-top: $mrg;
+	color: #45789A;
+}
+
+//создадим миксин для высоты и ширины блока с фоном
+@mixin wh($w,$h){
+	width: $w;
+	height: $h;
+}
+
+//шаблон для размещения блока по центру страницы
+%centr{
+	margin: 0 auto;
+}
+body {
+	background-color: #E3F6CE;
+}
+.name{
+		@extend %tpltext_updown;
+		margin-top: $mrg;
+	}
+
+.bgimage {
+	
+	background: url('../img/Ellipse_1_copy2.png') 50% no-repeat;
+
+	.description, .description2{
+		@extend %tpltextbody;
+		margin-top: $mrg;
+		text-shadow: 1px 1px 11px #919DA5;
+	}
+	.bgblock1 {
+		margin-top: $mrg;
+		@include wh(840px, 560px); //подключен миксин
+		@extend %centr;
+		background: url('../img/bbg.jpg') 0 0/cover no-repeat;
+		padding-top: 10px;
+		box-shadow: 0 3px 20px #90A02B;
+		.bgblock2 {
+			@include wh(840px - 20px, 560px - 20px); //подключен миксин и математика
+			@extend %centr;
+			background: url('../img/YDXJ0430.jpg') 0 0/cover no-repeat;
+		}
+	}
+
+}
+.list{
+	margin-top: $mrg + 50px;
+	margin-left: 450px;
+		.ls li:nth-child(2){
+		font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+		font-style: italic;
+		font-size: 22px;
+		}
+		.ls li:nth-child(3){
+		color: #8975EF;
+		text-decoration: underline;
+		}
+		.ls li:nth-child(4){
+		color: #0B052D;
+
+		}
+		.ls li:nth-child(4):hover{
+			text-decoration: underline;
+			}
+		.ls li:nth-child(5){
+		color: #2CF1BC;
+		font-weight: bold;
+		}
+		.ls li:nth-child(5):hover{
+		color: #F12CD7;
+		font-weight: bold;
+		}
+}
+li{
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 20px;
+	background: url('../img/check_icon.png') left no-repeat;
+	padding: 0 0 0 45px;
+	margin-bottom: 20px;
+	}
+
+
+
+.final {
+	margin-top: $mrg + 50px;
+	margin-bottom: $mrg;
+	@extend %tpltext_updown;
+}
+
+
